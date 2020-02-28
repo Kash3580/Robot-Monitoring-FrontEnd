@@ -10,7 +10,9 @@ body {
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
 }
-
+.HeaderText{
+  color:whitesmoke
+}
 h1,h2,h3,h4,h5,h6,label,span {
   font-weight: 500;
   font-family: 'Fira Sans', sans-serif;
@@ -27,7 +29,7 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .auth-wrapper {
-  margin-top: 50px;
+  margin-top: 150px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -71,4 +73,8 @@ body, html, .App, #root, .auth-wrapper {
 
 .forgot-password a {
   color: #167bff;
+}
+.error{
+  color:red
+  
 }

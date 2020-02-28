@@ -1,10 +1,11 @@
 import React from 'react';
-import { Layout, Menu, Icon } from 'antd';
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import {  Menu, Icon } from 'antd';
+import {   Link, withRouter } from "react-router-dom";
 
 const sidemenu = withRouter(props => {
     const { location } = props;
     return (
+     
       <Menu theme="dark" mode="inline" selectedKeys={[location.pathname]}>
         <Menu.Item key="/dashboard">
           <Icon type="dashboard" />
@@ -16,22 +17,18 @@ const sidemenu = withRouter(props => {
           <span className="nav-text">Robot</span>
           <Link to="/robot" />
         </Menu.Item>
-        <Menu.Item key="/location-maps">
+        <Menu.Item key="/map">
           <Icon type="compass" />
           <span className="nav-text">Map</span>
-          <Link to="/location-maps" />
+          <Link to="/map" />
         </Menu.Item>
         <Menu.Item key="/path">
           <Icon type="bulb" />
           <span className="nav-text">Path</span>
           <Link to="/path" />
-        </Menu.Item>
-        <Menu.Item key="/login">
-          <Icon type="bulb" />
-          <span className="nav-text">Login</span>
-          <Link to="/login" />
-        </Menu.Item>
-      </Menu>
+        </Menu.Item>       
+      </Menu>   
+
     );
   });
 

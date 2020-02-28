@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import Cookies from 'universal-cookie';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+
+ 
 export default class Login extends Component {
-    
+     
     constructor(props) {
+        const cookies = new Cookies();
+        cookies.remove('token');
         super(props);
-        this.state = {value: '',
-         isFound :true
-    }; 
+        this.state = {
+                      value : '',
+                    isFound : true
+          }; 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
@@ -30,7 +35,7 @@ export default class Login extends Component {
         var password = event.target.formBasicPassword.value
         const cookies = new Cookies();
         
-             fetch('http://localhost:4001/user/', {   //calling go api
+             fetch('https://localhost:4001/user/', {   //calling go api
                 method: 'POST',
                 body: JSON.stringify({
                         'email': email,
@@ -44,7 +49,7 @@ export default class Login extends Component {
                     this.setState({
                         isFound:true 
                     })
-                    this.props.history.push('/home');
+                    window.location.href='/dashboard';
                 }
                 else{
                     this.notify("You have entered wrong username and password")
@@ -60,11 +65,11 @@ export default class Login extends Component {
           }
     
     render() {
-        const error = {
-            color: "red",           
-             fontSize:"10px",
-            fontFamily: "Arial"
-          };
+        // const error = {
+        //     color: "red",           
+        //      fontSize:"10px",
+        //     fontFamily: "Arial"
+        //   };
         return (
             
             <form  onSubmit={this.handleSubmit}>

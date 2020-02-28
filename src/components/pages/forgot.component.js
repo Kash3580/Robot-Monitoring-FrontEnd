@@ -17,7 +17,7 @@ export default class ForgotPassword extends Component {
         var email = event.target.formBasicEmail.value
         
         
-             fetch('http://localhost:4001/forgot-password/', {   //calling go api
+             fetch('https://localhost:4001/forgot-password/', {   //calling go api
                 method: 'POST',
                 body: JSON.stringify({
                         'email': email,

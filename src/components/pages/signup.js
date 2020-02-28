@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PasswordStrengthBar from 'react-password-strength-bar';
+import { Redirect } from "react-router-dom";
 export default class SignUp extends Component {
 
     constructor(props) {
@@ -21,8 +22,12 @@ export default class SignUp extends Component {
       
       toast.success(data, {
         position: toast.POSITION.TOP_CENTER,
-        
+        onClose:()=>{
+          alert('Please wait, redirecting....')
+          window.location.href='/login'
+        }
       });
+      
     }
     notifyerror = (data) =>{
       toast.error(data, {
@@ -39,7 +44,7 @@ export default class SignUp extends Component {
        
       
         
-             fetch('http://localhost:4001/signup/', {   //calling go api
+             fetch('https://localhost:4001/signup/', {   //calling go api
                 method: 'POST',
                 body: JSON.stringify({
                         'firstName': fname,
@@ -56,12 +61,13 @@ export default class SignUp extends Component {
               })
               .then(data => {
                
-                if(data[0]!=200)
+                if(data[0]!==200)
                 {
                   this.notifyerror("Error while storing data.")
                   return
                 }
                 this.notify(data[1].message)
+              // 
               })
              
             
@@ -78,7 +84,7 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>First name</label>
-                    <input type="text" id="FirstName" className="form-control" placeholder="First name"   />
+                    <input type="text" id="FirstName" className="form-control" placeholder="First name"   required />
                 </div>
                 <div className="form-group">
                     <label>Last name</label>

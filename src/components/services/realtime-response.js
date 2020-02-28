@@ -59,14 +59,6 @@ function subscribeToTimer(cb) {
   });
 };
 
-function getEmitData(){
-
-  socket.emit("initial_data");
-  
-};
-function setEmitOff( msg){ 
-  socket.off("field", msg);
-  
-};
+ 
 
 export default subscribeToTimer;
